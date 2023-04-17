@@ -29,7 +29,7 @@ USDT
 ```
 
 ## API Documentation
-The API documentation is available at the following URL: http://localhost:8080/swagger-ui.html
+The API documentation is available at the following URL: http://localhost:8080/swagger-ui/index.html
 
 ## API Endpoints
 ### User
