@@ -1,0 +1,12 @@
+[
+  {
+    "symbol": "ETHUSDT",
+    "base": "ETH",
+    "quote": "USDT"
+  },
+  {
+    "symbol": "BTCUSDT",
+    "base": "BTC",
+    "quote": "USDT"
+  }
+]

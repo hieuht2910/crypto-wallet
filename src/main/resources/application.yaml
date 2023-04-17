@@ -1,0 +1,25 @@
+spring:
+    datasource:
+        url: jdbc:h2:mem:mydb
+        username: sa
+        password:
+        driverClassName: org.h2.Driver
+#        hbm2ddl: create-drop
+    jpa:
+        spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
+        hibernate:
+            ddl-auto: create-drop
+            show-sql: true
+            format_sql: true
+            use_sql_comments: true
+            naming:
+                physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+                implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
+    h2:
+        console.enabled: true
+
+configurations:
+    priceAggregator:
+        binanceUrl: https://api.binance.com/api/v3/ticker/bookTicker
+        huobiUrl: https://api.huobi.pro/market/tickers
+        interval: 5000
