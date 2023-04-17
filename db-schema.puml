@@ -1,0 +1,51 @@
+@startuml
+
+entity User {
+  + id: long
+  --
+  username: string
+  ...
+}
+
+entity Balance {
+  + id: long
+  --
+  currency_id: long
+  quantity: decimal
+  ...
+}
+
+entity Currency {
+  + id: long
+  --
+  symbol: string
+  ...
+}
+
+entity CurrencyPair {
+  + id: long
+  --
+  base_currency_id: long
+  quote_currency_id: long
+  ...
+}
+
+entity Transaction {
+  + id: long
+  --
+  user_id: long
+  currency_pair_id: long
+  base_balance_id: long
+  quote_balance_id: long
+  amount: decimal
+  date: datetime
+  ...
+}
+
+User --o{ Balance
+Currency --|{  CurrencyPair
+CurrencyPair ||-- Transaction
+Transaction  }o-- User
+Balance --|{ Transaction
+
+@enduml

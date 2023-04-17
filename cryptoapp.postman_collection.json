@@ -1,0 +1,152 @@
+{
+	"info": {
+		"_postman_id": "10608b89-e1d3-428b-bceb-dc72f7cf3571",
+		"name": "cryptoapp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15258485"
+	},
+	"item": [
+		{
+			"name": "User Wallet",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/v1/users/admin/wallets",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"admin",
+						"wallets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All currency-pairs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/v1/currency-pairs/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"currency-pairs",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get currency-pair by symbol",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/v1/currency-pairs/ETHUSDT",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"currency-pairs",
+						"ETHUSDT"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Do Transaction",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"symbol\": \"ETHUSDT\",\r\n    \"quantity\": \"1\",\r\n    \"type\": \"BUY\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/users/admin/transactions",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"admin",
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User transaction history",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/v1/users/admin/transactions/histories",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"admin",
+						"transactions",
+						"histories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User transaction history by symbol",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/v1/users/admin/transactions/ETHUSDT/histories",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"admin",
+						"transactions",
+						"ETHUSDT",
+						"histories"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
