@@ -10,6 +10,13 @@ URL: http://localhost:8080/h2-console <br />
 Username: sa <br />
 Password: 
 
+## Assumptions
+- User has already authenticated and authorised to access the APIs
+- User's initial wallet balance 50,000 USDT in DB record.
+- Only support Ethereum - ETHUSDT and Bitcoin - BTCUSDT pairs of crypto
+  trading.
+- Each user has one 1 wallet to reduce the complexity
+
 ## Initial Data
 The application is preloaded with some initial data.  <br />
 The default user data is loaded from the file `src/main/resources/default-user.json`.
@@ -45,6 +52,8 @@ Aggregate Trading pairs: [TradingPair( XXX ... ) // For scheduler price
 ## API Documentation
 The API documentation is available at the following URL: http://localhost:8080/swagger-ui/index.html
 
+![alt text](swagger-ui-img.jpg)
+
 ## Database Schema
 The database schema is available the root folder, there are 2 files:
 1. `db-schema.puml` is the database schema by plantuml
@@ -55,7 +64,7 @@ The database schema is available the root folder, there are 2 files:
 
 ## API Endpoints and Testcase
 
-1. After the application running, you can use "/api/v1/users/admin/wallets" endpoint to verify the default user
+### 1. After the application running, you can use "/api/v1/users/admin/wallets" endpoint to verify the default user
 API Endpoint: 
 ```
 /api/v1/users/{username}/wallets
@@ -75,7 +84,7 @@ The data should be
 ]
 ```
 
-2. Verify the currency pairs data and price from Binance or Huobi (10s interval)
+### 2. Verify the currency pairs data and price from Binance or Huobi (10s interval)
 
 2.1. Get all currency pairs
 ```
@@ -114,7 +123,7 @@ The data should be kind of
 ```
 
 **After this step, we have a default user and currency pairs with prices. Now we can do some transactions**
-3. Do a transaction with BUY ETHUSDT
+### 3. Do a transaction with BUY ETHUSDT
 ```agsl
 curl --location 'localhost:8080/api/v1/users/admin/transactions' \
 --header 'Content-Type: application/json' \
@@ -165,7 +174,7 @@ curl --location 'localhost:8080/api/v1/users/admin/transactions' \
 
 You can prepare your testcase.
 
-4. Verify the wallet after the transactions
+### 4. Verify the wallet after the transactions
 ```
 curl --location 'localhost:8080/api/v1/users/admin/wallets'
 ```
@@ -186,7 +195,7 @@ The data should be kind of
     }
 ]
 ```
-5. Retrieve the transaction history <br />
+### 5. Retrieve the transaction history <br />
 There are 2 ways to retrieve the transaction history
 
 5.1 Retrieve the transaction history by user
