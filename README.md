@@ -15,7 +15,7 @@ Password:
 - User's initial wallet balance 50,000 USDT in DB record.
 - Only support Ethereum - ETHUSDT and Bitcoin - BTCUSDT pairs of crypto
   trading.
-- Each user has one 1 wallet to reduce the complexity
+- Each user has only one wallet to reduce the complexity
 
 ## Initial Data
 The application is preloaded with some initial data.  <br />
@@ -64,13 +64,13 @@ The database schema is available the root folder, there are 2 files:
 
 ## API Endpoints and Testcase
 
-### 1. After the application running, you can use "/api/v1/users/admin/wallets" endpoint to verify the default user
+### 1. After the application running, you can verify the default user and wallet
 API Endpoint: 
 ```
 /api/v1/users/{username}/wallets
 ```
 
-For username: admin
+For username: `admin`
 ```
 curl --location 'localhost:8080/api/v1/users/admin/wallets'
 ```
@@ -90,7 +90,7 @@ The data should be
 ```
 curl --location 'localhost:8080/api/v1/currency-pairs/'
 ```
-The data should be kind of
+The data should be a kind of
 ```agsl
 [
     {
@@ -112,7 +112,7 @@ The data should be kind of
 ```agsl
 curl --location 'localhost:8080/api/v1/currency-pairs/ETHUSDT'
 ```
-The data should be kind of
+The data should be a kind of
 ```agsl
 {
     "id": 1,
@@ -123,15 +123,15 @@ The data should be kind of
 ```
 
 **After this step, we have a default user and currency pairs with prices. Now we can do some transactions**
-### 3. Do a transaction with BUY ETHUSDT
+### 3. Do a transaction
 ```agsl
-curl --location 'localhost:8080/api/v1/users/admin/transactions' \
---header 'Content-Type: application/json' \
---data '{
+POST localhost:8080/api/v1/users/admin/transactions
+Payload example:
+{
     "symbol": "BTCUSDT",
     "quantity": "1",
-    "type": "SELL"
-}'
+    "type": "BUY"
+}
 ```
 Payload explanation:
 ```agsl
@@ -141,7 +141,7 @@ Payload explanation:
     "type": "BUY" // transaction type, should be BUY or SELL
 }
 ```
-
+#### Use case
 For instance, if we want to buy 3 ETH with 1 BTC, we can do
 ```agsl
 // BUY 1 BTC
@@ -172,13 +172,11 @@ curl --location 'localhost:8080/api/v1/users/admin/transactions' \
 }'
 ```
 
-You can prepare your testcase.
-
 ### 4. Verify the wallet after the transactions
 ```
 curl --location 'localhost:8080/api/v1/users/admin/wallets'
 ```
-The data should be kind of
+The data should be a kind of
 ```agsl
 [
     {
