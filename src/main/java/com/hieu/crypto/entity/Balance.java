@@ -18,7 +18,7 @@ public class Balance {
     @JoinColumn(name = "currency_id")
     private Currency currency;
 
-    private BigDecimal quantity;
+    private BigDecimal quantity = BigDecimal.ZERO;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", updatable = false)

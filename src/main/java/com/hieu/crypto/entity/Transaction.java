@@ -1,5 +1,6 @@
 package com.hieu.crypto.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -21,6 +22,7 @@ public class Transaction {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", updatable = false)
+    @JsonIgnore
     private User user;
 
     @ManyToOne
@@ -28,8 +30,14 @@ public class Transaction {
     private CurrencyPair currencyPair;
 
     @ManyToOne
-    @JoinColumn(name = "balance_id")
-    private Balance balance;
+    @JoinColumn(name = "base_balance_id")
+    @JsonIgnore
+    private Balance baseBalance;
+
+    @ManyToOne
+    @JoinColumn(name = "quote_balance_id")
+    @JsonIgnore
+    private Balance quoteBalance;
 
     @Enumerated(EnumType.STRING)
     private Type type;

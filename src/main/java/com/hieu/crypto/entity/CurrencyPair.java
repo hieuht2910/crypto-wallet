@@ -19,10 +19,10 @@ public class CurrencyPair {
     private String symbol;
 
     @Column(name = "bid_price")
-    private BigDecimal bidPrice;
+    private BigDecimal bidPrice = BigDecimal.ZERO;
 
     @Column(name = "ask_price")
-    private BigDecimal askPrice;
+    private BigDecimal askPrice = BigDecimal.ZERO;
 
     @ManyToOne
     @JoinColumn(name = "base_currency_id")
